@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AE Finder</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- 标题栏 -->
+        <div id="title-bar">
+<span id="app-title">AE Finder</span>
+        </div>
+
+        <!-- 顶部工具栏 -->
+        <div id="toolbar">
+            <div id="path-input-wrapper">
+<input type="text" id="path-input" placeholder="搜索或输入路径...">
+                <span id="path-input-clear">×</span>
+                <div id="history-dropdown"></div>
+            </div>
+            <button id="btn-open-explorer" class="toolbar-btn" title="打开文件夹">↗</button>
+        </div>
+
+        <!-- 工具栏分隔条 -->
+        <div id="splitter-toolbar" class="splitter"></div>
+
+        <!-- 标签下拉菜单（隐藏） -->
+        <div id="tags-dropdown" class="tags-dropdown"></div>
+
+        <!-- 主内容区 -->
+        <div id="main-container">
+            <!-- 左侧文件列表 -->
+            <div id="file-list">
+                <div class="panel-header">
+                    <div id="drives-bar">
+                        <!-- 动态生成磁盘按钮 -->
+                    </div>
+                    <button id="btn-tags" class="btn-nav btn-tags" title="标签文件夹">☆</button>
+                    <button id="btn-home" class="btn-nav btn-home" title="默认文件夹">⌂</button>
+                </div>
+                <div class="panel-path" id="left-path" title="">
+                    <!-- 当前路径 -->
+                </div>
+                <!-- 列表头（视图/排序） -->
+                <div id="list-header">
+                    <span class="col-name" data-sort="name">名称<span class="sort-arrow"></span></span>
+                    <span class="col-divider"></span>
+                    <span class="col-type" data-sort="type">类型<span class="sort-arrow"></span></span>
+                    <span class="col-divider"></span>
+                    <span class="col-date" data-sort="mtime">修改日期<span class="sort-arrow"></span></span>
+                    <span class="col-actions">
+                        <button id="btn-view-toggle" class="btn-view" title="切换视图">☰</button>
+                    </span>
+                </div>
+                <div class="list-content" id="list-content">
+                    <!-- 动态生成所有文件+文件夹 -->
+                </div>
+            </div>
+
+            <!-- 分隔条 -->
+            <div id="splitter" class="splitter"></div>
+
+            <!-- 右侧预览区 -->
+            <div id="preview-panel">
+                <!-- 右侧磁盘栏 -->
+                <div class="panel-header">
+                    <div id="drives-bar-right">
+                        <!-- 动态生成磁盘按钮 -->
+                    </div>
+                    <button id="btn-preview-home" class="btn-nav btn-home" title="设为默认">⌂</button>
+                </div>
+                <div class="panel-path" id="right-path" title="">
+                    <!-- 右侧当前路径 -->
+                </div>
+                <!-- 右侧列表头（筛选/排序） -->
+                <div id="preview-list-header">
+                    <span class="col-name" data-sort="name" data-panel="preview">名称<span class="sort-arrow"></span></span>
+                    <span class="col-divider"></span>
+                    <span class="col-type" data-sort="type" data-panel="preview">类型<span class="sort-arrow"></span></span>
+                    <span class="col-divider"></span>
+                    <span class="col-date" data-sort="mtime" data-panel="preview">修改日期<span class="sort-arrow"></span></span>
+                    <span class="col-actions">
+                        <button id="btn-preview-view-toggle" class="btn-view" title="切换视图">☰</button>
+                    </span>
+                </div>
+                <div id="preview-container">
+                    <div id="preview-placeholder">选择文件夹以预览</div>
+                    <!-- 文件夹内容列表 -->
+                    <div id="folder-contents" style="display:none"></div>
+                    <!-- 媒体预览区域 -->
+                    <div id="media-preview" style="display:none"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部分隔条 -->
+        <div id="splitter-h" class="splitter"></div>
+
+        <!-- 底部编辑/详情区 -->
+        <div id="editor-panel">
+            <div id="editor-header">
+                <span id="editor-title">文件详情</span>
+                <div id="editor-actions">
+                    <button id="btn-save" class="editor-btn" style="display:none">保存</button>
+                </div>
+            </div>
+            <div id="editor-content">
+                <!-- 文本编辑器或详细信息 -->
+                <div id="file-details">
+                    <div class="detail-row"><span class="detail-label">文件名:</span><span id="detail-name">-</span></div>
+                    <div class="detail-row"><span class="detail-label">路径:</span><span id="detail-path">-</span></div>
+                    <div class="detail-row"><span class="detail-label">大小:</span><span id="detail-size">-</span></div>
+                    <div class="detail-row"><span class="detail-label">类型:</span><span id="detail-type">-</span></div>
+                    <div class="detail-row"><span class="detail-label">修改时间:</span><span id="detail-mtime">-</span></div>
+                </div>
+                <textarea id="text-editor" style="display:none" placeholder="文件内容..."></textarea>
+            </div>
+        </div>
+
+        <!-- 状态栏 -->
+        <div id="status-bar">
+            <span id="status-text">就绪</span>
+            <span id="item-count">0 项</span>
+        </div>
+    </div>
+
+    <!-- CSInterface -->
+    <script src="js/CSInterface.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
